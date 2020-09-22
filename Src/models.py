@@ -4,5 +4,5 @@ from typing import Optional
 
 class Item(BaseModel):
     name: str
-    description: Optional[str] = 'Description'
+    description: Optional[str] = None   # Default value: None
     price: int
