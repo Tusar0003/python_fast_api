@@ -69,7 +69,7 @@ async def add_user_info(name: str, profession: str, mobile: str):
 
 
 @fast_api.post('/api/v1/resources/add/item')
-async def add_user_info(item: Item):
+async def add_item(item: Item):
     cursor.execute('Insert into Item (Name, Description, Price) '
                    'Values (?,?,?)', item.name, item.description, item.price)
     cursor.commit()
