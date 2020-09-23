@@ -44,9 +44,9 @@ async def get_all_user_info():
 
 @fast_api.get('/api/v1/resources/single/info/')
 async def get_single_user_info(name: str):
-    user_info = cursor.execute('Select * From UserInfo Where Name=?', name)
-    row_headers = [col[0] for col in user_info.description]  # this will extract row headers
-    rv = user_info.fetchall()
+    result = cursor.execute('Select * From UserInfo Where Name=?', name)
+    row_headers = [col[0] for col in result.description]  # this will extract row headers
+    rv = result.fetchall()
     data = [dict(zip(row_headers, row)) for row in rv]
 
     # print(data)
