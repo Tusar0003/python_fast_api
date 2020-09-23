@@ -10,7 +10,7 @@ fast_api = FastAPI()
 # server = 'localhost\sqlexpress' # for a named instance
 # server = 'myserver,port' # to specify an alternate port
 server = '(LocalDb)\demo'
-database = 'TestDB'
+database = 'ApiTestDB'
 username = 'sa'
 password = '0147896325'
 
@@ -32,7 +32,7 @@ async def read_root():
 
 @fast_api.get('/api/v1/resources/info/all')
 async def get_all_user_info():
-    result = cursor.execute('Select * from TestDB.dbo.UserInfo')
+    result = cursor.execute('Select * from UserInfo')
     row_headers = [col[0] for col in result.description]  # this will extract row headers
     rv = result.fetchall()
     data = [dict(zip(row_headers, row)) for row in rv]
